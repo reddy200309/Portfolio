@@ -1,0 +1,874 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Comic Sans MS', cursive, sans-serif;
+}
+
+body {
+    background-color: black; /* Set body background to black */
+    color: white; /* Set default text color to white for contrast */
+    margin: 0; /* Remove default margin */
+}
+
+/* Navigation Bar */
+
+nav ul li a img {
+  transition: filter 0.3s ease;
+}
+
+/* On hover, apply a filter to change icon color to black */
+nav ul li a:hover img {
+  filter: invert(100%);
+}
+nav {
+  background-color: #333;
+  text-align: center;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  padding: 10px 0;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.nav-container {
+  display: flex;
+  justify-content: center; /* Center align the items */
+  align-items: center;
+  position: relative; /* For absolute positioning of the dropdown */
+}
+
+nav ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  display: flex; /* Use flexbox for horizontal layout */
+}
+
+nav ul li {
+  margin: 0 15px; /* Space between items */
+}
+
+nav a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 18px;
+  font-family: 'Comic Sans MS', sans-serif;
+  padding: 10px 20px;
+  border-radius: 25px;
+  display: inline-flex;
+  align-items: center;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden; /* Ensure the background effect doesn't overflow */
+}
+
+nav a img {
+  margin-right: 8px;
+  transition: transform 0.3s ease;
+}
+
+nav a:hover img {
+  transform: scale(1.3);
+}
+
+nav a:hover {
+  background-color: #fff;
+  color: #333;
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.8),
+              0 0 30px rgba(255, 255, 255, 0.6),
+              0 0 45px rgba(255, 255, 255, 0.4);
+}
+
+nav a:before, nav a:after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 130%;
+  height: 130%;
+  transform: translate(-50%, -50%);
+  background: rgba(255, 255, 255, 0.1);
+  transition: all 0.5s ease;
+  border-radius: 50%;
+  z-index: -1;
+  opacity: 0;
+}
+
+nav a:hover:before, nav a:hover:after {
+  width: 100%;
+  height: 100%;
+  opacity: 1;
+  background: rgba(255, 255, 255, 0.2);
+}
+
+nav a:active {
+  background-color: #595c59;
+  color: #000;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  nav ul {
+      display: none; /* Hide the list by default */
+      flex-direction: column; /* Stack the items vertically */
+      width: 100%; /* Full width */
+      position: absolute; /* Position the dropdown */
+      top: 50px; /* Adjust based on your navbar height */
+      left: 0; /* Align to the left */
+      background-color: #333; /* Background color */
+      padding: 20px 0; /* Padding for the dropdown */
+  }
+
+  nav ul.show {
+      display: flex; /* Show when toggled */
+  }
+
+  nav ul li {
+      margin: 10px 0; /* Space between items */
+      display: block; /* Block display for vertical stacking */
+  }
+
+  .nav-toggle {
+      display: flex; /* Show the toggle button */
+      flex-direction: column; /* Stack the bars */
+      cursor: pointer; /* Pointer cursor */
+      margin-right: auto; /* Align toggle button to the right */
+      margin-left: 20px; /* Right margin */
+  }
+
+  .bar {
+      height: 3px; /* Height of the bars */
+      width: 25px; /* Width of the bars */
+      background-color: white; /* Color of the bars */
+      margin: 3px 0; /* Spacing between bars */
+      transition: all 0.3s; /* Smooth transition */
+  }
+}
+
+
+header {
+  background-color: #c9c5c5;
+  color: black;
+  padding: 50px 0;
+  text-align: center;
+}
+
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.header-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;  /* Allow items to wrap on smaller screens */
+  padding: 0 20px;
+}
+
+.profile-pic {
+  width: 220px;
+  height: 220px;
+  border-radius: 50%;
+  border: 5px solid #000;
+  margin-left: 20px;
+}
+
+header h1 {
+  font-size: 3em;
+  text-align: left;
+  margin-left: 20px;
+}
+
+header p {
+  font-size: 1.2em;
+  text-align: left;
+  margin-left: 20px;
+}
+
+.social-links {
+  display: flex;
+  gap: 20px;
+  margin-left: 200px;
+}
+
+.social-icon {
+  font-size: 40px;
+  color: #000;
+  transition: color 0.3s;
+}
+
+.social-icon:hover {
+  color: #0077b5;  /* LinkedIn blue as example for hover */
+}
+
+.resume-button {
+  margin-top: 20px;
+}
+
+/* Responsive Design - For screens smaller than 768px (tablets and mobile devices) */
+@media (max-width: 768px) {
+  .header-content {
+    flex-direction: column; /* Stack content vertically */
+    align-items: center;    /* Center-align all content */
+  }
+
+  header h1 {
+    font-size: 2.5em;       /* Reduce heading size on smaller screens */
+    text-align: center;
+    margin-left: 0;
+  }
+
+  .profile-pic {
+    width: 150px;
+    height: 150px;
+    margin-left: 0;
+    margin-bottom: 20px;    /* Add space below the image */
+  }
+
+  .social-links {
+    justify-content: center;  /* Center social icons */
+    margin-left: 0;
+  }
+
+  .social-icon {
+    font-size: 35px;        /* Reduce icon size */
+  }
+
+  .resume-button {
+    margin-top: 10px;       /* Reduce margin for download button */
+  }
+}
+
+/* Extra small devices (mobile phones - smaller than 480px) */
+@media (max-width: 480px) {
+  header h1 {
+    font-size: 2em;        /* Further reduce heading size */
+  }
+
+  .social-icon {
+    font-size: 30px;       /* Further reduce icon size */
+  }
+
+  .profile-pic {
+    width: 120px;          /* Make profile picture smaller */
+    height: 120px;
+  }
+}
+
+h2 {
+  text-align: left; /* Align headings to the left */
+  margin-left: 20px; /* Optional: Add left margin */
+}
+
+.typewriter {
+  display: inline-block;
+  overflow: hidden;
+  border-right: 0.15em solid orange;
+  white-space: nowrap;
+  margin: 0 auto;
+  animation: typing 4s steps(20, end), blink-caret 0.75s step-end infinite;
+}
+
+/* Media queries for responsiveness */
+@media (max-width: 768px) {
+  .header-content {
+      flex-direction: column; /* Stack elements vertically */
+      align-items: center; /* Center items horizontally */
+      text-align: center; /* Center text */
+  }
+
+  .profile-pic {
+      width: 180px;
+      height: 180px;
+      margin: 20px 0; /* Add margin around the profile picture */
+  }
+
+  header h1 {
+      font-size: 2em; /* Adjust font size */
+      margin-left: 0; /* Reset left margin */
+  }
+
+  header p, .typewriter {
+      text-align: center;
+      margin-left: 0; /* Reset left margin */
+  }
+
+  .resume-button {
+      margin: 20px 0; /* Add some spacing */
+  }
+}
+
+@media (max-width: 480px) {
+  header h1 {
+      font-size: 1.8em; /* Further adjust for smaller screens */
+  }
+
+  .profile-pic {
+      width: 150px;
+      height: 150px; /* Adjust profile pic size for smaller screens */
+  }
+
+  .typewriter {
+      font-size: 1.2em; /* Adjust typewriter text size */
+  }
+
+  .resume-button {
+      padding: 8px 16px; /* Adjust button padding */
+  }
+}
+.resume-button {
+  margin-top: 20px;
+}
+
+.resume-button button {
+  background-color: #4CAF50; /* Green background */
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  font-size: 1em;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.resume-button button:hover {
+  background-color: #45a049; /* Darker green on hover */
+}
+
+
+.resume-button {
+  margin-top: 20px;
+}
+
+.resume-button a {
+  background-color: #4CAF50; /* Green background */
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  font-size: 1em;
+  text-decoration: none; /* Remove underline */
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  display: inline-block; /* Make it an inline-block element */
+}
+
+.resume-button a:hover {
+  background-color: #45a049; /* Darker green on hover */
+}
+
+/* Media queries for responsiveness */
+@media (max-width: 768px) {
+  .resume-button a {
+      padding: 8px 16px; /* Adjust button padding for smaller screens */
+  }
+}
+
+
+
+
+
+.container {
+    width: 80%;
+    margin: 0 auto;
+}
+
+#about {
+    margin: 40px 0;
+    text-align: center;
+}
+
+#about h2 {
+    font-size: 2.5em;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+#about p {
+    font-size: 1.2em;
+    line-height: 1.8;
+    max-width: 800px;
+    margin: 0 auto;
+}
+.design-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #1f1f1f;
+  min-height: 5vh;
+  padding: 30px 0;
+  font-family: Jost;
+}
+
+.design {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.timeline {
+  width: 80%;
+  max-width: 1000px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.timeline-content {
+  padding: 20px;
+  background: black;
+  box-shadow: 5px 5px 10px #2e2e2e, -5px -5px 10px #2e2e2e;
+  border-radius: 5px;
+  color: white;
+  transition: transform 0.4s ease;
+  margin: 1rem;
+  overflow-wrap: break-word;
+}
+
+.timeline-content:hover {
+  transform: scale(1.05);
+}
+
+.timeline-img {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  display: block;
+  transition: transform 0.4s ease;
+}
+
+.timeline-content:hover .timeline-img {
+  transform: rotate(360deg);
+}
+
+.timeline-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* Space between image and text */
+  gap: 20px; /* Adds space between image and text */
+}
+
+.timeline-text {
+  flex-grow: 1;
+}
+
+
+/* Responsive Design for Timeline */
+@media screen and (max-width: 768px) {
+  .timeline {
+    display: flex;
+    flex-direction: column; /* Stack content vertically on small screens */
+    align-items: center;
+  }
+
+  .timeline-content {
+    width: 90%; /* Adjust the width to fit the screen */
+    margin: 10px 0;
+  }
+
+  .timeline-item {
+    flex-direction: column; /* Stack image and text vertically */
+    align-items: center; /* Center items */
+    text-align: center;
+  }
+
+  .timeline-img {
+    margin-bottom: 10px; /* Add spacing below the image */
+  }
+
+  .timeline-middle {
+    display: none; /* Hide the vertical line in the middle for mobile */
+  }
+
+  .timeline-circle {
+    display: none; /* Hide the circles on the timeline for mobile */
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .timeline-content {
+    padding: 15px; /* Reduce padding on very small screens */
+  }
+
+  .timeline-img {
+    width: 80px;
+    height: 80px; /* Make the image smaller */
+  }
+}
+
+
+
+
+#skills {
+  padding: 50px 0;
+  background-color: #020202;
+  text-align: center;
+}
+
+.skills-wrapper {
+  overflow: hidden; /* Hide the overflow to create the sliding effect */
+  width: 100%;
+}
+
+.skills-grid {
+  display: flex;
+  animation: scroll 8s linear infinite; /* Animation for scrolling */
+  white-space: nowrap; /* Prevent items from wrapping to the next line */
+}
+
+.skill-item {
+  flex: 0 0 auto;
+  text-align: center;
+  margin: 0 40px; /* Increased gap between skill items */
+}
+
+.skill-item img {
+  width: 100px;
+  height: 100px;
+}
+
+.skill-item p {
+  font-size: 18px;
+  margin-top: 10px;
+}
+
+/* Animation for moving the skills from right to left */
+@keyframes scroll {
+  0% {
+      transform: translateX(0);
+  }
+  100% {
+      transform: translateX(-50%); /* Move left by half the total width of the grid */
+  }
+}
+
+/* Responsive behavior */
+@media screen and (max-width: 768px) {
+  .skill-item {
+      margin: 0 20px; /* Adjusted for medium screens */
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .skill-item {
+      margin: 0 10px; /* Adjusted for smaller screens */
+  }
+
+  .skill-item img {
+      width: 80px;
+      height: 80px;
+  }
+
+  .skill-item p {
+      font-size: 16px;
+  }
+}
+
+
+#projects {
+  padding: 50px 0;
+  background-color: black; /* Set background to black */
+  text-align: center;
+}
+
+h2 {
+  color: #fff; /* White color for the heading */
+  margin-bottom: 20px; /* Space below the heading */
+}
+
+.projects-container {
+  display: flex;
+  flex-wrap: wrap; /* Allow items to wrap onto the next line */
+  justify-content: center; /* Center the items */
+  gap: 30px; /* Increased space between project items */
+}
+
+.flip-card {
+  background-color: transparent; /* Transparent background for flip cards */
+  width: 300px; /* Fixed width for larger screens */
+  perspective: 1000px; /* Perspective for 3D effect */
+  border-radius: 10px; /* Rounded corners for the card */
+  overflow: hidden; /* Ensure corners are rounded */
+  transition: transform 0.3s, box-shadow 0.3s; /* Smooth transition for scale and shadow */
+  border: 2px solid #00bfff; /* Light blue border around the card */
+}
+
+.flip-card:hover {
+  transform: scale(1.05); /* Scale effect on hover */
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5); /* Shadow effect */
+}
+
+.flip-card-inner {
+  position: relative;
+  width: 100%; /* Full width */
+  height: 350px; /* Height for uniformity */
+  transition: transform 0.6s; /* Smooth transition for flip effect */
+  transform-style: preserve-3d; /* Preserve 3D effect */
+}
+
+.flip-card:hover .flip-card-inner {
+  transform: rotateY(180deg); /* Rotate on hover */
+}
+
+.flip-card-front,
+.flip-card-back {
+  position: absolute;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  backface-visibility: hidden; /* Hide back face when flipped */
+}
+
+.flip-card-front {
+  z-index: 2; /* Show front card */
+  transform: rotateY(0deg); /* No rotation for front */
+  background-color: #4c4d4e;
+}
+
+.flip-card-back {
+  transform: rotateY(180deg); /* Rotate back to hide it */
+  background-color: #1a1a1a; /* Dark gray background for back */
+  padding: 20px; /* Padding for content */
+  display: flex; /* Center content vertically */
+  flex-direction: column; /* Align items in column */
+  justify-content: center; /* Center vertically */
+  align-items: center; /* Center horizontally */
+}
+
+.flip-card-back h3 {
+  margin: 10px 0; /* Margin for title */
+  color: #00bfff; /* Light blue color for title */
+}
+
+.flip-card-back p {
+  font-size: 0.9rem; /* Smaller font size for description */
+  color: #d9d9d9; /* Light gray color for description text */
+  text-align: center; /* Centered text */
+}
+
+.flip-card-back a {
+  margin-top: 10px; /* Space above the link */
+}
+
+.project-image {
+  width: 100%; /* Full width for images */
+  height: 280px; /* Fixed height for images */
+  object-fit: cover; /* Cover the area */
+  border-bottom: 2px solid #00bfff; /* Light blue bottom border for separation */
+  border-radius: 10px 10px 0 0; /* Round top corners */
+  transition: transform 0.3s; /* Smooth transition for image scaling */
+}
+
+.flip-card:hover .project-image {
+  transform: scale(1.05); /* Scale effect on image hover */
+}
+
+.project-link {
+  display: inline-block;
+  margin-top: 10px; /* Space above the link */
+  padding: 10px 20px; /* Padding for the link */
+  background-color: #00bfff; /* Light blue background color */
+  color: black; /* Black text color for contrast */
+  text-decoration: none; /* Remove underline */
+  border-radius: 5px; /* Rounded corners */
+  transition: background-color 0.3s, transform 0.3s; /* Smooth transition */
+}
+
+.project-link:hover {
+  background-color: #0080ff; /* Darken background on hover */
+  transform: translateY(-3px); /* Move up slightly on hover */
+}
+
+/* Responsive behavior */
+@media screen and (max-width: 768px) {
+  .projects-container {
+      justify-content: center; /* Center items on smaller screens */
+  }
+
+  .flip-card {
+      width: 90%; /* Set width to 90% for smaller screens */
+  }
+
+  .project-image {
+      height: 250px; /* Adjust image height for smaller screens */
+  }
+}
+
+
+
+#certifications {
+  padding: 50px 0;
+  background-color: black;
+  text-align: center;
+}
+
+.certifications-row {
+  display: flex;
+  flex-wrap: wrap; /* Allow items to wrap onto the next line */
+  justify-content: center; /* Center the items */
+  gap: px; /* Space between certification items */
+}
+
+.certification {
+  flex: 0 1 calc(25% - 20px); /* Set width to 25% minus the gap for larger screens */
+  text-align: center;
+  margin: 10px; /* Margin for spacing */
+}
+
+.cert-icon {
+  width: 200px; /* Set a fixed width for the certification icons */
+  height: 200px; /* Set a fixed height for the certification icons */
+}
+
+.cert-buttons {
+  display: flex; /* Use flexbox to align buttons */
+  justify-content: center; /* Center buttons */
+  margin-top: 10px; /* Space above the buttons */
+}
+
+.btn-icon {
+  text-decoration: none; /* Remove underline from links */
+  margin: 0 5px; /* Space between buttons */
+  font-size: 24px; /* Increase font size for better visibility */
+  transition: transform 0.3s; /* Add transition effect */
+}
+
+/* Add hover effect for buttons */
+.btn-icon:hover {
+  transform: scale(1.1); /* Slightly increase size on hover */
+}
+
+/* Responsive behavior */
+@media screen and (max-width: 1024px) {
+  .certification {
+      flex: 0 1 calc(33.33% - 20px); /* Set width to 33% for medium screens */
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .certification {
+      flex: 0 1 calc(50% - 20px); /* Set width to 50% for smaller screens */
+  }
+
+  .cert-icon {
+      width: 80px; /* Adjust icon size for smaller screens */
+      height: 80px; /* Adjust icon size for smaller screens */
+  }
+
+  .btn-icon {
+      font-size: 20px; /* Decrease button font size for smaller screens */
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .certification {
+      flex: 0 1 100%; /* Set width to 100% for very small screens */
+  }
+
+  .cert-icon {
+      width: 200px; /* Further adjust icon size for very small screens */
+      height: 200px; /* Further adjust icon size for very small screens */
+  }
+
+  .btn-icon {
+      font-size: 18px; /* Further decrease button font size for very small screens */
+  }
+}
+
+#contact {
+  padding: 50px 20px; /* Padding for the contact section */
+  background-color: black; /* Black background */
+  color: #fff; /* White text color */
+  text-align: left; /* Center the text */
+}
+
+h2 {
+  margin-bottom: 20px; /* Space below the heading */
+}
+
+.contact-form {
+  max-width: 600px; /* Maximum width for the form */
+  margin: 0 auto; /* Center the form horizontally */
+  background-color: #1a1a1a; /* Darker background for the form */
+  border-radius: 10px; /* Rounded corners for the form */
+  padding: 20px; /* Padding inside the form */
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5); /* Subtle shadow effect */
+}
+
+.form-group {
+  margin-bottom: 15px; /* Space between form groups */
+}
+
+label {
+  display: block; /* Make labels block elements */
+  margin-bottom: 5px; /* Space below labels */
+  font-weight: bold; /* Bold labels */
+}
+
+input[type="text"],
+input[type="email"],
+textarea {
+  width: 100%; /* Full width */
+  padding: 10px; /* Padding inside input fields */
+  border: 1px solid #333; /* Dark border */
+  border-radius: 5px; /* Rounded corners */
+  background-color: #fff; /* White background for input fields */
+  color: black; /* Black text color for input fields */
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+textarea:focus {
+  border-color: #00bfff; /* Change border color on focus */
+}
+
+button {
+  padding: 10px 15px; /* Padding for the button */
+  background-color: #00bfff; /* Button background color */
+  color: black; /* Text color for button */
+  border: none; /* No border */
+  border-radius: 5px; /* Rounded corners */
+  cursor: pointer; /* Pointer cursor on hover */
+  transition: background-color 0.3s; /* Smooth transition */
+}
+
+button:hover {
+  background-color: #0080ff; /* Darken background on hover */
+}
+
+/* Responsive behavior */
+@media screen and (max-width: 768px) {
+  .contact-form {
+      padding: 15px; /* Adjust padding on smaller screens */
+  }
+
+  button {
+      width: 100%; /* Full width for the button */
+  }
+}
+
+
+
+
+
+footer {
+    background-color: #333;
+    color: white;
+    padding: 20px 0;
+    text-align: center;
+}
+
+footer a {
+    color: #5c67f2;
+    text-decoration: none;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}
+
+
