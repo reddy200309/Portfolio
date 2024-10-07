@@ -67,10 +67,10 @@
         <div class="container">
             <h2>About Me</h2>
             <p>
-                Passionate B.Tech. student at KL University with a specialization in Cloud Edge Computing (CEC). Good in MERN and Python full-stack web development. 
-                Actively involved in projects as a core member of Megha, a university club. Eager to explore in the tech industry and explore new opportunities.
-
-              Certified in 2X AWS and Red Hat EX183, with a strong foundation in cloud computing and AWS services. Excited about expanding skills in emerging technologies to innovate and drive solutions forward.
+                I am a final-year Computer Science student at KL University with a passion for web development, cloud computing, 
+                and solving complex data structures and algorithms problems. I am continuously improving my skills in Java, MySQL, 
+                AWS, Git, and front-end technologies. My projects are focused on efficiency and scalability, and I love working 
+                on innovative tech solutions.
             </p>
         </div>
     </section>
@@ -301,11 +301,12 @@
         </div>
     </section>
     <br>
+
     <section id="contact">
         <div class="container">
             <h2>Contact Me</h2>
             <br>
-            <form class="contact-form">
+            <form class="contact-form" id="contactForm">
                 <div class="form-group">
                     <label for="name">Name:</label>
                     <input type="text" id="name" name="name" required>
@@ -320,6 +321,7 @@
                 </div>
                 <button type="submit">Send Message</button>
             </form>
+            <p id="statusMessage"></p>
         </div>
     </section>
     
@@ -330,7 +332,42 @@
             <p>Connect with me on <a href="https://www.linkedin.com/in/manikanta-reddy-karri-a329a3225/">LinkedIn</a></p>
         </div>
     </footer>
-    <script>
+
+
+    <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+    <script type="text/javascript">
+        (function() {
+    // Initialize EmailJS with your User ID (from EmailJS dashboard)
+    emailjs.init('My__EhUCnnIoZKKXk');
+})();
+
+document.getElementById('contactForm').addEventListener('submit', function(event) {
+    event.preventDefault(); // Prevent form from submitting the traditional way
+
+    // Send form data using EmailJS
+    emailjs.sendForm('service_zjqe9uk', 'template_hatnyms', this)
+        .then(function(response) {
+            console.log('SUCCESS!', response.status, response.text);
+            
+            // Display success message
+            const statusMessage = document.getElementById('statusMessage');
+            statusMessage.innerText = "Message sent successfully!";
+            statusMessage.classList.add('success');
+            statusMessage.classList.remove('error');
+            statusMessage.style.display = "block";
+        }, function(error) {
+            console.error('FAILED...', error);
+
+            // Display error message
+            const statusMessage = document.getElementById('statusMessage');
+            statusMessage.innerText = "Failed to send message. Please try again.";
+            statusMessage.classList.add('error');
+            statusMessage.classList.remove('success');
+            statusMessage.style.display = "block";
+        });
+});
+
+        
         const phrases = [
             "Computer Science Student",
             "SQL Enthusiast",
