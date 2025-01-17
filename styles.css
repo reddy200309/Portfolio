@@ -369,6 +369,59 @@ h2 {
 }
 
 
+.resume1-button {
+  padding: 8px 16px; /* Adjust button padding */
+}
+
+.resume1-button {
+margin-top: 20px;
+}
+
+.resume1-button button {
+background-color: #e50914; /* Green background */
+color: white;
+padding: 10px 20px;
+border: none;
+border-radius: 5px;
+font-size: 1em;
+cursor: pointer;
+transition: background-color 0.3s ease;
+}
+
+.resume1-button button:hover {
+background-color: #e50914; /* Darker green on hover */
+}
+
+
+.resume1-button {
+margin-top: 20px;
+}
+
+.resume1-button a {
+background-color: #e50914; /* Green background */
+color: white;
+padding: 10px 20px;
+border: none;
+border-radius: 5px;
+font-size: 1em;
+text-decoration: none; /* Remove underline */
+cursor: pointer;
+transition: background-color 0.3s ease;
+display: inline-block; /* Make it an inline-block element */
+}
+
+.resume1-button a:hover {
+background-color: #e50914; /* Darker green on hover */
+}
+
+/* Media queries for responsiveness */
+@media (max-width: 768px) {
+.resume1-button a {
+  padding: 8px 16px; /* Adjust button padding for smaller screens */
+}
+}
+
+
 
 
 
